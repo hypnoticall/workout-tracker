@@ -1,14 +1,21 @@
-import { createSignal } from "solid-js"
+import { createSignal, onMount } from "solid-js"
 import { useNavigate, A } from "@solidjs/router"
 import { login } from "../lib/auth"
 
 export default function SignIn() {
+  console.log("Rendering SignIn component")
+
   const [email, setEmail] = createSignal("")
   const [password, setPassword] = createSignal("")
   const [error, setError] = createSignal("")
   const navigate = useNavigate()
 
+  onMount(() => {
+    console.log("SignIn component mounted")
+  })
+
   const handleSubmit = async (e) => {
+    console.log("Submitting form");
     e.preventDefault()
     setError("")
     try {
@@ -50,4 +57,6 @@ export default function SignIn() {
       </div>
     </div>
   )
+
+    return(<div>Test</div>)
 }

@@ -5,9 +5,7 @@ import "./index.css"
 
 render(
   () => (
-    <Router>
-      <App />
-    </Router>
+    <App />
   ),
   document.getElementById("root")
 )
