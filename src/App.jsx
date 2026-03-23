@@ -1,5 +1,5 @@
-import { createSignal, onMount } from "solid-js"
-import { Route, Routes, Navigate } from "@solidjs/router"
+import { createSignal, onMount, Show } from "solid-js"
+import { Router, Route } from "@solidjs/router"
 import { onAuthChange } from "./lib/auth"
 
 import SignIn from "./pages/SignIn"
@@ -21,31 +21,32 @@ export default function App() {
   })
 
   return (
-    <>
-      {loading() ? (
+    <Show
+      when={!loading()}
+      fallback={
         <div class="flex items-center justify-center h-screen">
           <span class="loading loading-spinner loading-lg"></span>
         </div>
-      ) : (
-        <Routes>
-          <Route path="/login" component={SignIn} />
-          <Route path="/register" component={SignUp} />
-          <Route path="/reset-password" component={ResetPassword} />
-          <Route path="/signout" component={SignOut} />
-          <Route
-            path="/profile"
-            component={() =>
-              user() ? <UserProfile user={user()} /> : <Navigate href="/login" />
-            }
-          />
-          <Route
-            path="/"
-            component={() =>
-              user() ? <Dashboard user={user()} /> : <Navigate href="/login" />
-            }
-          />
-        </Routes>
-      )}
-    </>
+      }
+    >
+      <Router>
+        <Route path="/login" component={SignIn} />
+        <Route path="/register" component={SignUp} />
+        <Route path="/reset-password" component={ResetPassword} />
+        <Route path="/signout" component={SignOut} />
+        <Route
+          path="/profile"
+          component={() => user()
+            ? <UserProfile user={user()} />
+            : <>{window.location.href = "/login"}</>}
+        />
+        <Route
+          path="/"
+          component={() => user()
+            ? <Dashboard user={user()} />
+            : <>{window.location.href = "/login"}</>}
+        />
+      </Router>
+    </Show>
   )
 }

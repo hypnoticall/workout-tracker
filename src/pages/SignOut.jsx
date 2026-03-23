@@ -10,7 +10,9 @@ export default function SignOut() {
     navigate("/login")
   })
 
-  return <div class="flex items-center justify-center h-screen">
-    <span class="loading loading-spinner loading-lg"></span>
-  </div>
+  return (
+    <div class="flex items-center justify-center h-screen">
+      <span class="loading loading-spinner loading-lg"></span>
+    </div>
+  )
 }

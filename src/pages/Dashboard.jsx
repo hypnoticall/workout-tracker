@@ -7,8 +7,13 @@ export default function Dashboard(props) {
     <div class="min-h-screen bg-base-200 p-6">
       <div class="max-w-lg mx-auto">
         <div class="flex justify-between items-center mb-6">
-          <h1 class="text-2xl font-bold">Zdravo, {props.user.displayName} 👋</h1>
-          <button class="btn btn-ghost btn-sm" onClick={() => navigate("/profile")}>
+          <h1 class="text-2xl font-bold">
+            Zdravo, {props.user.displayName} 👋
+          </h1>
+          <button
+            class="btn btn-ghost btn-sm"
+            onClick={() => navigate("/profile")}
+          >
             Profil
           </button>
         </div>

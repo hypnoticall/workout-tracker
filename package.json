@@ -11,15 +11,15 @@
   "dependencies": {
     "@solidjs/router": "^0.15.4",
     "date-fns": "^4.1.0",
-    "firebase": "^12.6.0",
+    "firebase": "^12.11.0",
     "solid-js": "^1.9.10",
     "tw": "^0.1.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.17",
-    "daisyui": "^5.5.5",
-    "tailwindcss": "^4.1.17",
+    "@tailwindcss/vite": "^4.2.2",
+    "daisyui": "^5.5.19",
+    "tailwindcss": "^4.2.2",
     "vite": "^7.2.2",
     "vite-plugin-solid": "^2.11.10"
   }

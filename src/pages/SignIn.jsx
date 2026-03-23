@@ -24,14 +24,26 @@ export default function SignIn() {
       <div class="card w-full max-w-sm bg-base-100 shadow-md p-8">
         <h1 class="text-2xl font-bold mb-6">Prijava</h1>
         <form onSubmit={handleSubmit} class="flex flex-col gap-4">
-          <input class="input input-bordered" type="email" placeholder="Email"
-            value={email()} onInput={e => setEmail(e.target.value)} required />
-          <input class="input input-bordered" type="password" placeholder="Lozinka"
-            value={password()} onInput={e => setPassword(e.target.value)} required />
+          <input
+            class="input input-bordered"
+            type="email"
+            placeholder="Email"
+            value={email()}
+            onInput={e => setEmail(e.target.value)}
+            required
+          />
+          <input
+            class="input input-bordered"
+            type="password"
+            placeholder="Lozinka"
+            value={password()}
+            onInput={e => setPassword(e.target.value)}
+            required
+          />
           {error() && <p class="text-error text-sm">{error()}</p>}
           <button class="btn btn-primary" type="submit">Prijavi se</button>
         </form>
-        <div class="mt-4 text-sm text-center flex flex-col gap-1">
+        <div class="mt-4 text-sm text-center flex flex-col gap-2">
           <A href="/reset-password" class="link">Zaboravili ste lozinku?</A>
           <A href="/register" class="link">Nemate račun? Registrirajte se</A>
         </div>

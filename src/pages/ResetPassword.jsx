@@ -28,8 +28,14 @@ export default function ResetPassword() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} class="flex flex-col gap-4">
-            <input class="input input-bordered" type="email" placeholder="Tvoj email"
-              value={email()} onInput={e => setEmail(e.target.value)} required />
+            <input
+              class="input input-bordered"
+              type="email"
+              placeholder="Tvoj email"
+              value={email()}
+              onInput={e => setEmail(e.target.value)}
+              required
+            />
             {error() && <p class="text-error text-sm">{error()}</p>}
             <button class="btn btn-primary" type="submit">Pošalji reset link</button>
             <A href="/login" class="btn btn-outline">Natrag</A>

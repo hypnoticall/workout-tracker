@@ -25,12 +25,30 @@ export default function SignUp() {
       <div class="card w-full max-w-sm bg-base-100 shadow-md p-8">
         <h1 class="text-2xl font-bold mb-6">Registracija</h1>
         <form onSubmit={handleSubmit} class="flex flex-col gap-4">
-          <input class="input input-bordered" type="text" placeholder="Ime i prezime"
-            value={name()} onInput={e => setName(e.target.value)} required />
-          <input class="input input-bordered" type="email" placeholder="Email"
-            value={email()} onInput={e => setEmail(e.target.value)} required />
-          <input class="input input-bordered" type="password" placeholder="Lozinka (min. 6 znakova)"
-            value={password()} onInput={e => setPassword(e.target.value)} required />
+          <input
+            class="input input-bordered"
+            type="text"
+            placeholder="Ime i prezime"
+            value={name()}
+            onInput={e => setName(e.target.value)}
+            required
+          />
+          <input
+            class="input input-bordered"
+            type="email"
+            placeholder="Email"
+            value={email()}
+            onInput={e => setEmail(e.target.value)}
+            required
+          />
+          <input
+            class="input input-bordered"
+            type="password"
+            placeholder="Lozinka (min. 6 znakova)"
+            value={password()}
+            onInput={e => setPassword(e.target.value)}
+            required
+          />
           {error() && <p class="text-error text-sm">{error()}</p>}
           <button class="btn btn-primary" type="submit">Registriraj se</button>
         </form>

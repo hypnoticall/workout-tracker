@@ -1,4 +1,3 @@
-// Struktura novog treninga za Firestore
 export const workoutSchema = (userId, data) => ({
   userId,
   title: data.title,
@@ -8,7 +7,6 @@ export const workoutSchema = (userId, data) => ({
   createdAt: new Date().toISOString()
 })
 
-// Struktura jedne vježbe unutar treninga
 export const exerciseSchema = (data, order) => ({
   name: data.name,
   sets: Number(data.sets),
