@@ -8,6 +8,9 @@ import SignOut from "./pages/SignOut"
 import ResetPassword from "./pages/ResetPassword"
 import UserProfile from "./pages/UserProfile"
 import Dashboard from "./pages/Dashboard"
+import NewWorkout from "./pages/NewWorkout"
+import WorkoutDetail from "./pages/WorkoutDetail"
+import EditWorkout from "./pages/EditWorkout"
 
 export default function App() {
   const [user, setUser] = createSignal(null)
@@ -21,47 +24,25 @@ export default function App() {
   })
 
   return (
-    <Router root={Layout}>
-      <Route path="/login" component={SignIn} />
-      <Route path="/register" component={SignUp} />
-      <Route path="/reset-password" component={ResetPassword} />
-      <Route path="/signout" component={SignOut} />
-      <Route
-        path="/profile"
-        component={() => user()
-          ? <UserProfile user={user()} />
-          : <>{window.location.href = "/login"}</>}
-      />
-      <Route
-        path="/"
-        component={() => user()
-          ? <Dashboard user={user()} />
-          : <>{window.location.href = "/login"}</>}
-      />
-    </Router>
-  )
-}
-
-function Layout(props) {
-  onMount(() => {
-    console.log("Layout mounted");
-  })
-
-  return (
-    <div class="min-h-screen flex flex-col">
-      <header class="bg-base-100 shadow">
-        <div class="container mx-auto px-4 py-2">
-          <h1 class="text-2xl font-bold">Workout Tracker</h1>
+    <Show
+      when={!loading()}
+      fallback={
+        <div class="flex items-center justify-center h-screen">
+          <span class="loading loading-spinner loading-lg"></span>
         </div>
-      </header>
-      <main class="grow container mx-auto px-4 py-2">
-        {props.children}
-      </main>
-      <footer class="bg-base-100 shadow">
-        <div class="container mx-auto px-4 py-2">
-          <p class="text-sm text-center">© 2023 Workout Tracker</p>
-        </div>
-      </footer>
-    </div>
+      }
+    >
+      <Router>
+        <Route path="/login" component={SignIn} />
+        <Route path="/register" component={SignUp} />
+        <Route path="/reset-password" component={ResetPassword} />
+        <Route path="/signout" component={SignOut} />
+        <Route path="/profile" component={() => user() ? <UserProfile user={user()} /> : <SignIn />} />
+        <Route path="/new" component={() => user() ? <NewWorkout user={user()} /> : <SignIn />} />
+        <Route path="/workout/:id" component={() => user() ? <WorkoutDetail user={user()} /> : <SignIn />} />
+        <Route path="/workout/:id/edit" component={() => user() ? <EditWorkout user={user()} /> : <SignIn />} />
+        <Route path="/" component={() => user() ? <Dashboard user={user()} /> : <SignIn />} />
+      </Router>
+    </Show>
   )
 }
